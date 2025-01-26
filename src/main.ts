@@ -11,7 +11,7 @@ async function bootstrap() {
 
   const logger = new Logger('Main');
   const configService = new ConfigService();
-  //if (`.env.${process.env.NODE_ENV.trim()}` === 'development') {
+  if (`.env.${process.env.NODE_ENV.trim()}` === 'development') {
     const config = new DocumentBuilder()
       .setTitle('M example')
       .setDescription('The marketAPI description')
@@ -21,7 +21,7 @@ async function bootstrap() {
       .build();
     const documentFactory = () => SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('docs', app, documentFactory);
-  //}
+  }
 
   app.useGlobalPipes(
     new ValidationPipe({
